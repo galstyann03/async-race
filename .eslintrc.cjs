@@ -26,6 +26,12 @@ module.exports = {
   },
   ignorePatterns: ['dist', 'node_modules'],
   rules: {
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: ['vite.config.ts'],
+      },
+    ],
     'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
     'import/extensions': [
       'error',
