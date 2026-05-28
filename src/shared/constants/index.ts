@@ -1,0 +1,7 @@
+export {
+  API_BASE_URL,
+  DEFAULT_CAR_COLOR,
+  FIRST_PAGE,
+  GARAGE_PAGE_LIMIT,
+  WINNERS_PAGE_LIMIT,
+} from './app';
