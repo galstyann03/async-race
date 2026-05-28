@@ -26,6 +26,13 @@ module.exports = {
   },
   ignorePatterns: ['dist', 'node_modules'],
   rules: {
+    'no-param-reassign': [
+      'error',
+      {
+        props: true,
+        ignorePropertyModificationsFor: ['state'],
+      },
+    ],
     'import/no-extraneous-dependencies': [
       'error',
       {
