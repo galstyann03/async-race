@@ -54,5 +54,8 @@ module.exports = {
         namedComponents: 'function-declaration',
       },
     ],
+    'react/require-default-props': 'off',
+    'react/jsx-no-bind': 'off',
+    'jsx-a11y/label-has-associated-control': ['error', { assert: 'either' }],
   },
 };
