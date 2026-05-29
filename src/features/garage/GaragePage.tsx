@@ -44,7 +44,14 @@ function GaragePage() {
 
   async function handleDelete(id: number) {
     await dispatch(removeCar(id)).unwrap();
-    dispatch(loadCars(page));
+    const newTotal = Math.max(0, totalCount - 1);
+    const newTotalPages = Math.max(1, Math.ceil(newTotal / GARAGE_PAGE_LIMIT));
+    const targetPage = Math.min(page, newTotalPages);
+    if (targetPage !== page) {
+      dispatch(setPage(targetPage));
+    } else {
+      dispatch(loadCars(page));
+    }
   }
 
   async function handleGenerate() {
