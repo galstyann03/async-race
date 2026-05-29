@@ -1,20 +1,12 @@
 import { NavLink, Route, Routes } from 'react-router-dom';
+import GaragePage from './features/garage/GaragePage';
 import './App.css';
-
-function GaragePage() {
-  return (
-    <main className="page">
-      <h1>Garage</h1>
-      <p className="page__hint">Garage controls will be added next.</p>
-    </main>
-  );
-}
 
 function WinnersPage() {
   return (
     <main className="page">
       <h1>Winners</h1>
-      <p className="page__hint">Winners table will be added after race logic.</p>
+      <p className="page__hint">Winners table will be added on Day 5.</p>
     </main>
   );
 }
@@ -24,7 +16,7 @@ function App() {
     <div className="app">
       <header className="app__header">
         <nav className="app__nav" aria-label="Main navigation">
-          <NavLink to="/" className="app__link">
+          <NavLink to="/" className="app__link" end>
             Garage
           </NavLink>
           <NavLink to="/winners" className="app__link">
