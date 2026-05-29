@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import { garageApi } from '../../api';
+import { garageApi, winnersApi } from '../../api';
 import { DEFAULT_CAR_COLOR, FIRST_PAGE, GARAGE_PAGE_LIMIT } from '../../shared/constants';
 import type { Car, CarPayload } from '../../shared/types';
+import { randomCarPayloads } from './utils/randomCar';
 
 type CarForm = { name: string; color: string };
 
@@ -42,7 +43,13 @@ export const editCar = createAsyncThunk(
 
 export const removeCar = createAsyncThunk('garage/remove', async (id: number) => {
   await garageApi.deleteCar(id);
+  await winnersApi.deleteWinner(id);
   return id;
+});
+
+export const generateCars = createAsyncThunk('garage/generate', async () => {
+  const payloads = randomCarPayloads(100);
+  await Promise.all(payloads.map((payload) => garageApi.createCar(payload)));
 });
 
 const garageSlice = createSlice({
