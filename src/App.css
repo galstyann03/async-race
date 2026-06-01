@@ -74,8 +74,6 @@
   }
 }
 
-/* ============ Day 3 — Garage layout (minimal; Day 6 polishes) ============ */
-
 .sr-only {
   position: absolute;
   width: 1px;
@@ -101,8 +99,6 @@ button:disabled {
 input {
   font: inherit;
 }
-
-/* ----- Garage page ----- */
 
 .garage-page__header {
   display: flex;
@@ -154,8 +150,6 @@ input {
   list-style: none;
 }
 
-/* ----- CarForm ----- */
-
 .car-form {
   display: flex;
   flex-wrap: wrap;
@@ -198,12 +192,10 @@ input {
   border-radius: 6px;
 }
 
-/* ----- CarItem ----- */
-
 .car-item {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
   gap: 12px;
   padding: 12px;
   background: rgba(30, 41, 59, 0.6);
@@ -216,39 +208,81 @@ input {
   box-shadow: 0 0 12px rgba(244, 114, 182, 0.25);
 }
 
+.car-item__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
 .car-item__controls {
   display: flex;
   gap: 6px;
 }
 
 .car-item__select,
-.car-item__delete {
+.car-item__delete,
+.car-item__start,
+.car-item__stop {
   padding: 6px 12px;
   background: transparent;
-  color: #e0f2fe;
-  border: 1px solid #475569;
   border-radius: 4px;
   font-size: 13px;
 }
 
-.car-item__delete {
-  color: #fca5a5;
-  border-color: #7f1d1d;
+.car-item__select {
+  color: #e0f2fe;
+  border: 1px solid #475569;
 }
 
-.car-item__swatch {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  border: 2px solid #475569;
+.car-item__delete {
+  color: #fca5a5;
+  border: 1px solid #7f1d1d;
+}
+
+.car-item__start {
+  color: #86efac;
+  border: 1px solid #14532d;
+}
+
+.car-item__stop {
+  color: #fde68a;
+  border: 1px solid #78350f;
 }
 
 .car-item__name {
   font-weight: 500;
 }
 
-/* ----- Pagination ----- */
+.car-track {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  padding: 4px 0;
+  border-top: 1px dashed #334155;
+  border-bottom: 1px dashed #334155;
+  overflow: hidden;
+}
+
+.car-track__car {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateX(0);
+  transform-origin: left center;
+  margin-top: -15px;
+  will-change: transform;
+}
+
+.car-track__finish {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  font-size: 22px;
+  line-height: 1;
+  pointer-events: none;
+}
 
 .pagination {
   display: flex;
