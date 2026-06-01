@@ -303,3 +303,46 @@ input {
   color: #cbd5e1;
   font-size: 14px;
 }
+
+.race-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.race-controls__buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.race-controls__race,
+.race-controls__reset {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.race-controls__race {
+  background: #22d3ee;
+  color: #0f172a;
+  border: none;
+}
+
+.race-controls__reset {
+  background: transparent;
+  color: #fbbf24;
+  border: 1px solid #b45309;
+}
+
+.race-controls__banner {
+  flex: 1 1 auto;
+  padding: 10px 16px;
+  background: rgba(244, 114, 182, 0.15);
+  border: 1px solid #f472b6;
+  border-radius: 6px;
+  color: #fce7f3;
+  font-size: 15px;
+}

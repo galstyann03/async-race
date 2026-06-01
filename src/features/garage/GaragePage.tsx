@@ -4,6 +4,7 @@ import { GARAGE_PAGE_LIMIT } from '../../shared/constants';
 import CarForm from './components/CarForm';
 import CarItem from './components/CarItem';
 import Pagination from './components/Pagination';
+import RaceControls from './components/RaceControls';
 import {
   addCar,
   clearEditForm,
@@ -23,6 +24,7 @@ function GaragePage() {
   const { cars, totalCount, page, createForm, editForm, status } = useAppSelector(
     (state) => state.garage,
   );
+  const isRaceRunning = useAppSelector((state) => state.race.isRaceRunning);
 
   const totalPages = Math.max(1, Math.ceil(totalCount / GARAGE_PAGE_LIMIT));
 
@@ -70,11 +72,14 @@ function GaragePage() {
         </p>
       </header>
 
+      <RaceControls cars={cars} />
+
       <section className="garage-page__controls">
         <CarForm
           name={createForm.name}
           color={createForm.color}
           submitLabel="Create"
+          disabled={isRaceRunning}
           onNameChange={(name) => dispatch(setCreateForm({ name }))}
           onColorChange={(color) => dispatch(setCreateForm({ color }))}
           onSubmit={handleCreate}
@@ -85,6 +90,7 @@ function GaragePage() {
             name={editForm.name}
             color={editForm.color}
             submitLabel="Update"
+            disabled={isRaceRunning}
             onNameChange={(name) => dispatch(setEditForm({ name }))}
             onColorChange={(color) => dispatch(setEditForm({ color }))}
             onSubmit={handleEditSubmit}
@@ -92,7 +98,12 @@ function GaragePage() {
           />
         )}
 
-        <button type="button" className="garage-page__generate" onClick={handleGenerate}>
+        <button
+          type="button"
+          className="garage-page__generate"
+          onClick={handleGenerate}
+          disabled={isRaceRunning}
+        >
           Generate 100 cars
         </button>
       </section>
@@ -110,6 +121,7 @@ function GaragePage() {
               key={car.id}
               car={car}
               selected={editForm.id === car.id}
+              disabled={isRaceRunning}
               onSelect={(c) => dispatch(selectCarForEdit(c))}
               onDelete={handleDelete}
             />
@@ -120,6 +132,7 @@ function GaragePage() {
       <Pagination
         page={page}
         totalPages={totalPages}
+        disabled={isRaceRunning}
         onChange={(newPage) => dispatch(setPage(newPage))}
       />
     </main>
