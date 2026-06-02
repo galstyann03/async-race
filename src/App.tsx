@@ -1,15 +1,7 @@
 import { NavLink, Route, Routes } from 'react-router-dom';
 import GaragePage from './features/garage/GaragePage';
+import WinnersPage from './features/winners/WinnersPage';
 import './App.css';
-
-function WinnersPage() {
-  return (
-    <main className="page">
-      <h1>Winners</h1>
-      <p className="page__hint">Winners table will be added on Day 5.</p>
-    </main>
-  );
-}
 
 function App() {
   return (
