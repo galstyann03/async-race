@@ -1,14 +1,37 @@
 import CarIcon from '../../../shared/components/CarIcon';
+import type { SortOrder, WinnerSortField } from '../../../shared/types';
 import type { WinnerRow } from '../winnersSlice';
 
 type WinnersTableProps = {
   rows: WinnerRow[];
   page: number;
   pageSize: number;
+  sortField: WinnerSortField | null;
+  sortOrder: SortOrder | null;
+  onSortChange: (field: WinnerSortField) => void;
 };
 
-function WinnersTable({ rows, page, pageSize }: WinnersTableProps) {
+function sortArrow(active: boolean, order: SortOrder | null): string {
+  if (!active || order === null) return '';
+  return order === 'ASC' ? ' ↑' : ' ↓';
+}
+
+function ariaSort(active: boolean, order: SortOrder | null): 'ascending' | 'descending' | 'none' {
+  if (!active) return 'none';
+  return order === 'ASC' ? 'ascending' : 'descending';
+}
+
+function WinnersTable({
+  rows,
+  page,
+  pageSize,
+  sortField,
+  sortOrder,
+  onSortChange,
+}: WinnersTableProps) {
   const startIndex = (page - 1) * pageSize;
+  const winsActive = sortField === 'wins';
+  const timeActive = sortField === 'time';
 
   return (
     <table className="winners-table">
@@ -23,11 +46,35 @@ function WinnersTable({ rows, page, pageSize }: WinnersTableProps) {
           <th scope="col" className="winners-table__col-name">
             Name
           </th>
-          <th scope="col" className="winners-table__col-wins">
-            Wins
+          <th
+            scope="col"
+            className={`winners-table__col-wins winners-table__sortable${
+              winsActive ? ' winners-table__sortable--active' : ''
+            }`}
+            aria-sort={ariaSort(winsActive, sortOrder)}
+          >
+            <button
+              type="button"
+              className="winners-table__sort-btn"
+              onClick={() => onSortChange('wins')}
+            >
+              Wins{sortArrow(winsActive, sortOrder)}
+            </button>
           </th>
-          <th scope="col" className="winners-table__col-time">
-            Best time (s)
+          <th
+            scope="col"
+            className={`winners-table__col-time winners-table__sortable${
+              timeActive ? ' winners-table__sortable--active' : ''
+            }`}
+            aria-sort={ariaSort(timeActive, sortOrder)}
+          >
+            <button
+              type="button"
+              className="winners-table__sort-btn"
+              onClick={() => onSortChange('time')}
+            >
+              Best time (s){sortArrow(timeActive, sortOrder)}
+            </button>
           </th>
         </tr>
       </thead>

@@ -75,10 +75,7 @@ const winnersSlice = createSlice({
     setPage(state, action: PayloadAction<number>) {
       state.page = action.payload;
     },
-    setSort(
-      state,
-      action: PayloadAction<{ field: WinnerSortField; order: SortOrder }>,
-    ) {
+    setSort(state, action: PayloadAction<{ field: WinnerSortField; order: SortOrder }>) {
       state.sortField = action.payload.field;
       state.sortOrder = action.payload.order;
       state.page = FIRST_PAGE;

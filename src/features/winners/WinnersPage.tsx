@@ -2,8 +2,9 @@ import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import Pagination from '../../shared/components/Pagination';
 import { WINNERS_PAGE_LIMIT } from '../../shared/constants';
+import type { WinnerSortField } from '../../shared/types';
 import WinnersTable from './components/WinnersTable';
-import { loadWinners, setPage } from './winnersSlice';
+import { loadWinners, setPage, setSort } from './winnersSlice';
 
 function WinnersPage() {
   const dispatch = useAppDispatch();
@@ -16,6 +17,14 @@ function WinnersPage() {
   useEffect(() => {
     dispatch(loadWinners({ page, sortField, sortOrder }));
   }, [dispatch, page, sortField, sortOrder]);
+
+  function handleSortChange(field: WinnerSortField) {
+    if (sortField !== field) {
+      dispatch(setSort({ field, order: 'DESC' }));
+      return;
+    }
+    dispatch(setSort({ field, order: sortOrder === 'ASC' ? 'DESC' : 'ASC' }));
+  }
 
   const isEmpty = rows.length === 0 && status !== 'loading';
 
@@ -37,7 +46,14 @@ function WinnersPage() {
           No winners yet. Run a race in the Garage to create one.
         </p>
       ) : (
-        <WinnersTable rows={rows} page={page} pageSize={WINNERS_PAGE_LIMIT} />
+        <WinnersTable
+          rows={rows}
+          page={page}
+          pageSize={WINNERS_PAGE_LIMIT}
+          sortField={sortField}
+          sortOrder={sortOrder}
+          onSortChange={handleSortChange}
+        />
       )}
 
       <Pagination

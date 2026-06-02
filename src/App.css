@@ -347,7 +347,6 @@ input {
   font-size: 15px;
 }
 
-
 .winners-page__header {
   display: flex;
   flex-wrap: wrap;
@@ -420,4 +419,29 @@ input {
 
 .winners-table__icon {
   line-height: 0;
+}
+
+.winners-table__sortable {
+  padding: 0;
+}
+
+.winners-table__sort-btn {
+  width: 100%;
+  padding: 10px 12px;
+  background: transparent;
+  border: none;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+}
+
+.winners-table__sort-btn:hover {
+  color: #f472b6;
+}
+
+.winners-table__sortable--active .winners-table__sort-btn {
+  color: #f472b6;
 }
