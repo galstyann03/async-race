@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { GARAGE_PAGE_LIMIT } from '../../shared/constants';
 import CarForm from './components/CarForm';
 import CarItem from './components/CarItem';
-import Pagination from './components/Pagination';
+import Pagination from '../../shared/components/Pagination';
 import RaceControls from './components/RaceControls';
 import {
   addCar,
