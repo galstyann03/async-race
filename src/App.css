@@ -445,3 +445,10 @@ input {
 .winners-table__sortable--active .winners-table__sort-btn {
   color: #f472b6;
 }
+
+
+.app__link--disabled {
+  pointer-events: none;
+  opacity: 0.45;
+  cursor: not-allowed;
+}
