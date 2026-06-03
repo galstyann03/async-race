@@ -446,9 +446,43 @@ input {
   color: #f472b6;
 }
 
-
 .app__link--disabled {
   pointer-events: none;
   opacity: 0.45;
   cursor: not-allowed;
+}
+
+.error-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  background: rgba(220, 38, 38, 0.12);
+  border: 1px solid #b91c1c;
+  border-radius: 6px;
+  color: #fecaca;
+}
+
+.error-banner__icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.error-banner__message {
+  flex: 1 1 auto;
+  font-size: 14px;
+}
+
+.error-banner__dismiss {
+  padding: 0 8px;
+  background: transparent;
+  border: none;
+  color: #fecaca;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.error-banner__dismiss:hover {
+  color: #fca5a5;
 }

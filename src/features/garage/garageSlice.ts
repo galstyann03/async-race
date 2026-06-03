@@ -78,6 +78,9 @@ const garageSlice = createSlice({
     clearEditForm(state) {
       state.editForm = { id: null, ...emptyForm };
     },
+    clearError(state) {
+      state.error = null;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -116,6 +119,7 @@ export const {
   selectCarForEdit,
   setEditForm,
   clearEditForm,
+  clearError,
 } = garageSlice.actions;
 
 export default garageSlice.reducer;

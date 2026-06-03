@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { GARAGE_PAGE_LIMIT } from '../../shared/constants';
+import ErrorBanner from '../../shared/components/ErrorBanner';
 import CarForm from './components/CarForm';
 import CarItem from './components/CarItem';
 import Pagination from '../../shared/components/Pagination';
@@ -8,6 +9,7 @@ import RaceControls from './components/RaceControls';
 import {
   addCar,
   clearEditForm,
+  clearError,
   editCar,
   generateCars,
   loadCars,
@@ -21,7 +23,7 @@ import {
 
 function GaragePage() {
   const dispatch = useAppDispatch();
-  const { cars, totalCount, page, createForm, editForm, status } = useAppSelector(
+  const { cars, totalCount, page, createForm, editForm, status, error } = useAppSelector(
     (state) => state.garage,
   );
   const isRaceRunning = useAppSelector((state) => state.race.isRaceRunning);
@@ -73,6 +75,8 @@ function GaragePage() {
       </header>
 
       <RaceControls cars={cars} />
+
+      {error && <ErrorBanner message={error} onDismiss={() => dispatch(clearError())} />}
 
       <section className="garage-page__controls">
         <CarForm

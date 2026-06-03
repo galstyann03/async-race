@@ -1,14 +1,15 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import ErrorBanner from '../../shared/components/ErrorBanner';
 import Pagination from '../../shared/components/Pagination';
 import { WINNERS_PAGE_LIMIT } from '../../shared/constants';
 import type { WinnerSortField } from '../../shared/types';
 import WinnersTable from './components/WinnersTable';
-import { loadWinners, setPage, setSort } from './winnersSlice';
+import { clearError, loadWinners, setPage, setSort } from './winnersSlice';
 
 function WinnersPage() {
   const dispatch = useAppDispatch();
-  const { rows, totalCount, page, sortField, sortOrder, status } = useAppSelector(
+  const { rows, totalCount, page, sortField, sortOrder, status, error } = useAppSelector(
     (state) => state.winners,
   );
 
@@ -26,7 +27,9 @@ function WinnersPage() {
     dispatch(setSort({ field, order: sortOrder === 'ASC' ? 'DESC' : 'ASC' }));
   }
 
-  const isEmpty = rows.length === 0 && status !== 'loading';
+  const showLoading = status === 'loading' && rows.length === 0;
+  const showEmpty = rows.length === 0 && status !== 'loading' && !error;
+  const showTable = rows.length > 0;
 
   return (
     <main className="page winners-page">
@@ -37,15 +40,17 @@ function WinnersPage() {
         </p>
       </header>
 
-      {status === 'loading' && rows.length === 0 && (
-        <p className="winners-page__loading">Loading…</p>
-      )}
+      {error && <ErrorBanner message={error} onDismiss={() => dispatch(clearError())} />}
 
-      {isEmpty ? (
+      {showLoading && <p className="winners-page__loading">Loading…</p>}
+
+      {showEmpty && (
         <p className="winners-page__empty">
           No winners yet. Run a race in the Garage to create one.
         </p>
-      ) : (
+      )}
+
+      {showTable && (
         <WinnersTable
           rows={rows}
           page={page}

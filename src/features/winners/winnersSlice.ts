@@ -85,6 +85,9 @@ const winnersSlice = createSlice({
       state.sortOrder = null;
       state.page = FIRST_PAGE;
     },
+    clearError(state) {
+      state.error = null;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -104,5 +107,5 @@ const winnersSlice = createSlice({
   },
 });
 
-export const { setPage, setSort, clearSort } = winnersSlice.actions;
+export const { setPage, setSort, clearSort, clearError } = winnersSlice.actions;
 export default winnersSlice.reducer;
