@@ -486,3 +486,85 @@ input {
 .error-banner__dismiss:hover {
   color: #fca5a5;
 }
+
+
+:focus-visible {
+  outline: 2px solid #67e8f9;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (max-width: 700px) {
+  .page h1 {
+    font-size: 32px;
+  }
+
+  .app__brand {
+    font-size: 24px;
+  }
+
+  .winners-table__col-wins,
+  .winners-table__col-time {
+    width: 90px;
+  }
+}
+
+@media (max-width: 500px) {
+  .page h1 {
+    font-size: 26px;
+  }
+
+  .garage-page__controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .car-form {
+    width: 100%;
+  }
+
+  .car-form__name {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .garage-page__generate {
+    width: 100%;
+  }
+
+  .car-item__controls {
+    flex-wrap: wrap;
+  }
+
+  .race-controls__buttons {
+    width: 100%;
+  }
+
+  .race-controls__race,
+  .race-controls__reset {
+    flex: 1 1 0;
+  }
+
+  .race-controls__banner {
+    flex-basis: 100%;
+  }
+
+  .winners-table th,
+  .winners-table td {
+    padding: 8px 6px;
+    font-size: 13px;
+  }
+
+  .winners-table__col-num {
+    width: 32px;
+  }
+
+  .winners-table__col-car {
+    width: 56px;
+  }
+
+  .winners-table__col-wins,
+  .winners-table__col-time {
+    width: 70px;
+  }
+}
