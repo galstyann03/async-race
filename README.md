@@ -2,8 +2,14 @@
 
 A React + TypeScript SPA that lets you create cars, race them, and track the winners.
 
-> **Live demo:** _to be added after Vercel deploy_
+> **Live demo:** [async-race-rho-amber.vercel.app](https://async-race-rho-amber.vercel.app/) — deploys cleanly, but cannot reach the local backend because browsers block HTTPS → HTTP (mixed content). The Vercel URL exists as proof of deploy; the working demo is the local one.
 > **Original task:** [EPAM Async Race](https://github.com/rolling-scopes-school/tasks/blob/master/epam/async-race.md)
+
+> ## 🔧 To actually test the app, run it locally
+>
+> Browsers block mixed-content requests, so the **HTTPS** Vercel page can't talk to the **HTTP** local backend. Both sides must run on the same scheme — and the task spec requires the backend to stay local, so the working demo is local for everyone.
+>
+> Follow the [Local setup](#local-setup) section: clone the [backend repo](https://github.com/mikhama/async-race-api) and this one, run `npm start` and `npm run dev`, then open **http://localhost:5173**.
 
 ## Self-assessed score
 
