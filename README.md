@@ -115,14 +115,14 @@ Default API base is `http://127.0.0.1:3000`. Override via `VITE_API_BASE_URL` in
 
 ## Available scripts
 
-| Script | What it does |
-| --- | --- |
-| `npm run dev` | Vite dev server with HMR |
-| `npm run build` | TypeScript check + production build |
-| `npm run preview` | Serve the production build locally |
-| `npm run lint` | ESLint check |
-| `npm run format` | Auto-format with Prettier |
-| `npm run ci:format` | Verify formatting (no writes) |
+| Script              | What it does                        |
+| ------------------- | ----------------------------------- |
+| `npm run dev`       | Vite dev server with HMR            |
+| `npm run build`     | TypeScript check + production build |
+| `npm run preview`   | Serve the production build locally  |
+| `npm run lint`      | ESLint check                        |
+| `npm run format`    | Auto-format with Prettier           |
+| `npm run ci:format` | Verify formatting (no writes)       |
 
 ## Architecture
 
